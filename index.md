@@ -19,17 +19,19 @@ tagline: Supporting tagline
     {{ site.posts.first.content }}
   </div>
 </div>
-<br>
+
 
 ##Posts
 
 <ul class="posts">
-  {% for post in site.posts limit: 3 %}
-  <li><span>
-    <h4>
-      <a href="{{ post.url }}">{{ post.date | date_to_string }} &raquo; {{ post.title }}</a>
-    </h4>
-  </li>
+  {% for post in site.posts limit: 4 %}
+    {% if site.posts.first != post %}
+    <li><span>
+      <h4>
+        <a href="{{ post.url }}">{{ post.date | date_to_string }} &raquo; {{ post.title }}</a>
+      </h4>
+    </li>
+    {% endif %}
   {% endfor %}
 
   <a href="/archive.html">more...</a>
